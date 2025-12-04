@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet{
 	    // 2. 既存セッション（ログイン済み）の有無確認
 	    if(userInfoOnSession != null) {
 			// 既にログイン済みならリダイレクト
-			response.sendRedirect(request.getContextPath() + "/ResavationPlatForm"); // 遷移先をコンテキストパス基準に修正
+			response.sendRedirect(request.getContextPath() + "/ReservationPlatForm"); // 遷移先をコンテキストパス基準に修正
 			return;
 		}
 	    
@@ -113,7 +113,7 @@ public class LoginServlet extends HttpServlet{
 	    		session.setAttribute("LOGIN_INFO", loggedInUser);
 	    	    
 	            // 2. リダイレクトを実行 (フォワードではなくリダイレクトが望ましい)
-	            response.sendRedirect(request.getContextPath() + "/ResavationPlatForm");
+	            response.sendRedirect(request.getContextPath() + "/ReservationPlatForm");
 	            return;
 	    	} 
 	    }
