@@ -78,6 +78,7 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		boolean loginSuccess = false;
+		String a;
 
 		//ローカル変数定義
 		String mailAddress = request.getParameter("mailAddress");
