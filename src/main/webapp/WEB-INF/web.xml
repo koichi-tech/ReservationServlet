@@ -30,5 +30,14 @@
     <servlet-name>ReservationPlatForm</servlet-name>
     <url-pattern>/ReservationPlatForm</url-pattern>
   </servlet-mapping>
- 
-</web-app>
+  <servlet>
+    <description></description>
+    <display-name>ShopDetailServlet</display-name>
+    <servlet-name>ShopDetailServlet</servlet-name>
+    <servlet-class>com.example.controller.ShopDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShopDetailServlet</servlet-name>
+    <url-pattern>/ShopDetailServlet</url-pattern>
+  </servlet-mapping>
+ </web-app>
