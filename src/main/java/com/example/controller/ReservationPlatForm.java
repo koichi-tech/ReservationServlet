@@ -17,7 +17,6 @@ import com.example.dto.ShopListDto;
 
 public class ReservationPlatForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-=======
 	private ShopListDao shopListDao;
 
        
@@ -28,7 +27,6 @@ public class ReservationPlatForm extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
->>>>>>> 96f41026c2596e343c48eb90f0886491aa8467dd
 
  // DAO のインスタンス化
  	@Override
@@ -39,7 +37,6 @@ public class ReservationPlatForm extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-=======
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
@@ -55,7 +52,6 @@ public class ReservationPlatForm extends HttpServlet {
 		// index.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
->>>>>>> 96f41026c2596e343c48eb90f0886491aa8467dd
 
 	// DAO のインスタンス化
 	@Override
