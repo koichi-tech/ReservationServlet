@@ -17,15 +17,45 @@ import com.example.dto.ShopListDto;
 
 public class ReservationPlatForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+=======
 	private ShopListDao shopListDao;
 
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ReservationPlatForm() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+>>>>>>> 96f41026c2596e343c48eb90f0886491aa8467dd
+
+ // DAO のインスタンス化
+ 	@Override
+ 	public void init() throws ServletException {
+ 		super.init();
+ 		shopListDao = new ShopListDao();
+ 	}
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ReservationPlatForm() {
-		super();
-	}
+=======
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		String forwardPath = "index.jsp";
+		
+		
+		// DAOを呼び出し、データ取得
+		List<ShopListDto> shopListDto = shopListDao.SelectShopList();
+		
+		// 取得結果をリクエストに格納
+		request.setAttribute("shopList", shopListDto);
+		
+		// index.jspにフォワード（結果を渡しながら遷移）
+		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
+		dispatcher.forward(request, response);
+>>>>>>> 96f41026c2596e343c48eb90f0886491aa8467dd
 
 	// DAO のインスタンス化
 	@Override
