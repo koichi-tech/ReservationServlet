@@ -7,6 +7,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.example.dao.ShopListDao;
+import com.example.dto.ShopListDto;
 
 /**
  * Servlet implementation class ResavationPlatForm
@@ -14,6 +18,8 @@ import java.io.IOException;
 
 public class ReservationPlatForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ShopListDao shopListDao;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -23,6 +29,12 @@ public class ReservationPlatForm extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+ // DAO のインスタンス化
+ 	@Override
+ 	public void init() throws ServletException {
+ 		super.init();
+ 		shopListDao = new ShopListDao();
+ 	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -30,6 +42,7 @@ public class ReservationPlatForm extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String forwardPath = "index.jsp";
+		
 		
 		// DAOを呼び出し、データ取得
 		List<ShopListDto> shopListDto = shopListDao.SelectShopList();
