@@ -31,9 +31,16 @@ public class ReservationPlatForm extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String forwardPath = "index.jsp";
 		
-		// 4. index.jspにフォワード（結果を渡しながら遷移）
+		// DAOを呼び出し、データ取得
+		List<ShopListDto> shopListDto = shopListDao.SelectShopList();
+		
+		// 取得結果をリクエストに格納
+		request.setAttribute("shopList", shopListDto);
+		
+		// index.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
+
 	}
 
 	/**
