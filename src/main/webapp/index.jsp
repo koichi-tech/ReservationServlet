@@ -29,18 +29,12 @@
 		<section class="recommendations">
 			<h2>✨ おすすめのレストラン</h2>
 			<div class="card-grid">
-				<div class="restaurant-card">
-					<div class="card-image-placeholder"></div>
-					<p class="card-title">店舗A</p>
-				</div>
-				<div class="restaurant-card">
-					<div class="card-image-placeholder"></div>
-					<p class="card-title">店舗B</p>
-				</div>
-				<div class="restaurant-card">
-					<div class="card-image-placeholder"></div>
-					<p class="card-title">店舗C</p>
-				</div>
+				<c:forEach var="shop" items="${shopList}" begin="0" end="2">
+					<div class="restaurant-card">
+						<div class="card-image-placeholder"></div>
+						<a href="${pageContext.request.contextPath}/ShopDetailServlet">${shop.shopName}</a>
+					</div>
+				</c:forEach>
 			</div>
 		</section>
 
@@ -50,12 +44,15 @@
 			<div class="list-header">
 				<h2>🔍 レストラン一覧</h2>
 				<div class="sort-controls">
-					<label for="sort">ソート機能:</label> <select id="sort">
-						<option value="popular">人気順</option>
-						<option value="rating">評価順</option>
-						<!--  <option value="price">価格順</option> -->
-					</select>
-					<button class="search-btn">検索</button>
+					<form
+						action="${pageContext.request.contextPath}/ReservationPlatForm"
+						method="POST">
+						<label for="sort">ソート機能:</label> <select name="sort" id="sort">
+							<option value="blank" <c:if test="${sort == 'blank' || sort == null}">selected</c:if>>なし</option>
+							<option value="rating" <c:if test="${sort == 'rating'}">selected</c:if>>評価順</option>
+						</select>
+						<button type="submit" subclass="search-btn">検索</button>
+					</form>
 				</div>
 			</div>
 
@@ -66,10 +63,9 @@
 					<div>評価</div>
 					<div>予約</div>
 				</div>
-				<!-- DAO から渡された shopList をループ -->
+				<!-- DAO から渡されたshopList をループ -->
 				<c:forEach var="shop" items="${shopList}">
 					<div class="table-row">
-						<!-- <div>${shop.shopName}</div>  -->
 						<a href="${pageContext.request.contextPath}/ShopDetailServlet">${shop.shopName}
 						</a>
 						<div>${shop.genreName}</div>

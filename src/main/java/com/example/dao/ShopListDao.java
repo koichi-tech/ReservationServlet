@@ -15,9 +15,9 @@ public class ShopListDao extends BaseDao {
 		super();
 	}
 
-	public List<ShopListDto> SelectShopList() {
+	public List<ShopListDto> selectShopList(String sort, boolean order) {
 
-		// 抽出結果格納用DTOリスト
+		// SQL結果格納用DTOリスト
 		List<ShopListDto> dtoList = new ArrayList<ShopListDto>();
 
 		// 発行するSQL文の生成（SELECT）
@@ -27,6 +27,11 @@ public class ShopListDao extends BaseDao {
 				+ "LEFT JOIN T_SHOP_GENRE AS B ON MP.GENRE_ID = B.GENRE_ID "
 				+ "LEFT JOIN t_review AS C ON A.SHOP_ID = C.SHOP_ID " + "GROUP BY A.SHOP_NAME, B.GENRE_NAME";
 
+		// ソート条件を追加
+		if (sort != null) {
+		 sql += " ORDER BY AVG_RATING DESC";	
+		}
+		
 		try (Connection con = getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery()) {
