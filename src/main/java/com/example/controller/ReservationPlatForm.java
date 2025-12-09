@@ -20,6 +20,15 @@ public class ReservationPlatForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ShopListDao shopListDao;
 
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ReservationPlatForm() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
 	// DAO のインスタンス化
 	@Override
 	public void init() throws ServletException {
