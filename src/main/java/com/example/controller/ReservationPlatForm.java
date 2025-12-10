@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
 
 import com.example.dao.ShopListDao;
@@ -20,14 +19,13 @@ public class ReservationPlatForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ShopListDao shopListDao;
 
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ReservationPlatForm() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ReservationPlatForm() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	// DAO のインスタンス化
 	@Override
@@ -46,12 +44,16 @@ public class ReservationPlatForm extends HttpServlet {
 		String forwardPath = "index.jsp";
 
 		// SQL結果格納用DTOリスト
+		List<ShopListDto> recommendShopListDto;
 		List<ShopListDto> shopListDto;
+		
+		// DAOを呼び出し、データ取得(RecoomendshpList用)
+		recommendShopListDto = shopListDao.selectRecommendShopList();
 
+		// DAOを呼び出し、データ取得(shpList用)
 		// ソート設定値の取得
 		String sort = request.getParameter("sort");
 
-		// DAOを呼び出し、データ取得
 		if (sort == null || sort.equals("blank")) {
 			// ソートが設定値がnull、もしくは空の場合
 			shopListDto = shopListDao.selectShopList(null, false);
@@ -61,6 +63,7 @@ public class ReservationPlatForm extends HttpServlet {
 		}
 
 		// 取得結果をリクエストに格納
+		request.setAttribute("recommendShopList", recommendShopListDto);
 		request.setAttribute("sort", sort);
 		request.setAttribute("shopList", shopListDto);
 
