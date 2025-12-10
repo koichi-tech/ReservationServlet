@@ -38,9 +38,6 @@ public class LoginServlet extends HttpServlet {
 		// 1. BaseDaoのインスタンス化
 		this.basedao = new BaseDao();
 
-		// 2. ★JDBCドライバのロードを実行（BaseDaoのメソッドを呼び出す）
-		this.basedao.loadDriver();
-
 		// 3. 初期化済みの basedao を使って依存オブジェクトを初期化
 		this.userDao = new UserDao(this.basedao);
 		this.authService = new AuthService(new DatabaseAuthentication(this.userDao));

@@ -7,6 +7,12 @@
 .classpath
 .project
 .settings
-# 3. その他
+
+# 3. アプリケーション固有の環境設定ファイル
+# 機密情報（DBパスワード等）を含むため除外
+src/main/webapp/META-INF/context.xml
+
+# 4. その他
 # 実行中に生成される可能性のあるログファイルなどを除外
 *.log
+
