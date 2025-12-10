@@ -29,7 +29,7 @@
 		<section class="recommendations">
 			<h2>✨ おすすめのレストラン</h2>
 			<div class="card-grid">
-				<c:forEach var="shop" items="${shopList}" begin="0" end="2">
+				<c:forEach var="shop" items="${recommendShopList}">
 					<div class="restaurant-card">
 						<div class="card-image-placeholder"></div>
 						<a href="${pageContext.request.contextPath}/ShopDetailServlet">${shop.shopName}</a>
@@ -48,10 +48,12 @@
 						action="${pageContext.request.contextPath}/ReservationPlatForm"
 						method="POST">
 						<label for="sort">ソート機能:</label> <select name="sort" id="sort">
-							<option value="blank" <c:if test="${sort == 'blank' || sort == null}">selected</c:if>>なし</option>
-							<option value="rating" <c:if test="${sort == 'rating'}">selected</c:if>>評価順</option>
-						</select>
-						<button type="submit" subclass="search-btn">検索</button>
+							<option value="blank"
+								<c:if test="${sort == 'blank' || sort == null}">selected</c:if>>なし</option>
+							<option value="rating"
+								<c:if test="${sort == 'rating'}">selected</c:if>>評価順</option>
+						</select> <input type="hidden" name="scrollY" id="scrollY">
+						<button type="submit" class="search-btn">検索</button>
 					</form>
 				</div>
 			</div>
@@ -84,5 +86,15 @@
 		<p>&copy; 2025 日野ナビ予約システム</p>
 	</footer>
 
+	<script>
+	document.querySelector('.sort-controls form').addEventListener('submit', function () {
+      document.getElementById('scrollY').value = window.scrollY;
+  	});
+	</script>
+	<c:if test="${not empty param.scrollY}">
+		<script>
+		window.scrollTo(0, ${param.scrollY});
+		</script>
+	</c:if>
 </body>
 </html>
