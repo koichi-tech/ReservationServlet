@@ -50,4 +50,14 @@
     <servlet-name>ReservationServlet</servlet-name>
     <url-pattern>/ReservationServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>com.example.controller.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/SignUpServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -112,7 +112,7 @@
 
 			<div class="signup-link">
 				<p>アカウントをお持ちでない方へ</p>
-				<a href="signup.html">新規会員登録はこちら</a>
+				<a href="${pageContext.request.contextPath}/SignUpServlet">新規会員登録はこちら</a>
 			</div>
 
 		</div>
