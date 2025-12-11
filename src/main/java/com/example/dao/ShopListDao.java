@@ -23,6 +23,7 @@ public class ShopListDao extends BaseDao {
 		// 発行するSQL文の生成（SELECT）
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT \n");
+		sql.append("A.SHOP_ID AS SHOP_ID, \n");
 		sql.append("A.SHOP_NAME AS SHOP_NAME, \n");
 		sql.append("B.GENRE_NAME AS GENRE_NAME, \n");
 		sql.append("COALESCE(AVG(C.RATING), 0) AS AVG_RATING \n");
@@ -46,6 +47,7 @@ public class ShopListDao extends BaseDao {
 			// ResultSetオブジェクトからDTOリストに格納
 			while (rs.next()) {
 				ShopListDto dto = new ShopListDto();
+				dto.setShopId(rs.getString("SHOP_ID"));
 				dto.setShopName(rs.getString("SHOP_NAME"));
 				dto.setGenreName(rs.getString("GENRE_NAME"));
 				dto.setAvgRating(rs.getDouble("AVG_RATING"));
