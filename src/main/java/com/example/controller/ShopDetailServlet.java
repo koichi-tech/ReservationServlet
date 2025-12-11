@@ -1,6 +1,11 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.example.dao.ShopDetailDao;
+import com.example.dto.ShopDetailDto;
+import com.example.dto.ShopListDto;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,12 +27,25 @@ public class ShopDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
 		//String forwardPath = "shopdetail.jsp";
+=======
+>>>>>>> 76922496d7acb3d958a4f43b86c4cda4b902a76d
 		String forwardPath = "shopdetail.jsp";
 
-		// shopDetail.jspにフォワード（結果を渡しながら遷移）
+		// Shop_IDの取得
+		String shopId = request.getParameter("shopId");
+
+		// DAOを呼び出し、データ取得
+		ShopDetailDao dao = new ShopDetailDao();
+		ShopDetailDto shopDetailDto = dao.selectShopDetail(shopId);
+
+		// 取得結果をリクエストに格納
+		request.setAttribute("shopDetail", shopDetailDto);
+
+		// shopdetail.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
 	}

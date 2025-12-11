@@ -32,7 +32,7 @@
 				<c:forEach var="shop" items="${recommendShopList}">
 					<div class="restaurant-card">
 						<div class="card-image-placeholder"></div>
-						<a href="${pageContext.request.contextPath}/ShopDetailServlet">${shop.shopName}</a>
+						<a href="${pageContext.request.contextPath}/ShopDetailServlet?shopId=${shop.shopId}">${shop.shopName}</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -68,7 +68,8 @@
 				<!-- DAO から渡されたshopList をループ -->
 				<c:forEach var="shop" items="${shopList}">
 					<div class="table-row">
-						<a href="${pageContext.request.contextPath}/ShopDetailServlet">${shop.shopName}
+						<a
+							href="${pageContext.request.contextPath}/ShopDetailServlet?shopId=${shop.shopId}">${shop.shopName}
 						</a>
 						<div>${shop.genreName}</div>
 						<div>⭐${shop.avgRating}</div>
