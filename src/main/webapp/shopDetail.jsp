@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>わくわく食堂 | 予約ナビ</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/style.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
 	rel="stylesheet">
@@ -71,8 +71,8 @@
 	<main class="container">
 
 		<div class="shop-header">
-			<h2>わくわく食堂</h2>
-			<div class="rating-display">⭐⭐⭐⭐⭐ 4.8</div>
+			<h2>${shopDetail.shopName}</h2>
+			<div class="rating-display">⭐⭐⭐⭐⭐ ${shopDetail.avgRating}</div>
 			<button class="reserve-btn"
 				onclick="location.href='reservation.html'">この店を予約する</button>
 		</div>
@@ -82,13 +82,13 @@
 				<section class="shop-info-box">
 					<h3>店舗情報</h3>
 					<p>
-						<strong>住所:</strong> 東京都日野市〇〇町 1-2-3
+						<strong>住所:</strong> ${shopDetail.fullAddress}
 					</p>
 					<p>
-						<strong>電話番号:</strong> 042-xxxx-xxxx
+						<strong>電話番号:</strong> ${shopDetail.phoneNumber}
 					</p>
 					<p>
-						<strong>ジャンル:</strong> 和食、定食
+						<strong>ジャンル:</strong> ${shopDetail.genreName}
 					</p>
 					<p>
 						<strong>紹介:</strong> 地元野菜を使った美味しい定食が人気です！

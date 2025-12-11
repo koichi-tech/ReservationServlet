@@ -1,12 +1,17 @@
 package com.example.dto;
 
-public class ShopListDto {
+public class ShopDetailDto {
 
 	private String shopId;
 	private String shopName;
+	private String phoneNumber;
+	private String city;
+	private String address;
 	private String genreName;
 	private double avgRating;
 
+	private String fullAddress;
+	
 	// ----------------------------------------------------------------
 	// getter/setter
 	// ----------------------------------------------------------------
@@ -19,12 +24,28 @@ public class ShopListDto {
 		return shopName;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
 	public String getGenreName() {
 		return genreName;
 	}
 
 	public double getAvgRating() {
 		return avgRating;
+	}
+	
+	public String getFullAddress() {
+		return fullAddress;
 	}
 
 	// --- セッター (Setter: フィールドに値を設定) ----------------------------
@@ -36,6 +57,18 @@ public class ShopListDto {
 		this.shopName = shopName;
 	}
 
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public void setGenreName(String genreName) {
 		this.genreName = genreName;
 	}
@@ -44,4 +77,8 @@ public class ShopListDto {
 		this.avgRating = avgRating;
 	}
 
+	public void setFullAddress(String city, String address) {
+	    this.fullAddress = city + address;
+	}
+	
 }
