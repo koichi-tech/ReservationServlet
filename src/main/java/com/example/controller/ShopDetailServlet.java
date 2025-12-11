@@ -24,7 +24,8 @@ public class ShopDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String forwardPath = "shopDetail.jsp";
+		//String forwardPath = "shopdetail.jsp";
+		String forwardPath = "shopdetail.jsp";
 
 		// shopDetail.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);

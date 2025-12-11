@@ -18,7 +18,7 @@
 		<h1>🍣 日野ナビ</h1>
 		<nav class="nav-bar">
 			<a href="${pageContext.request.contextPath}/ReservationPlatForm">ホーム</a>
-			<a href="">ランキング</a> <a href="/mypage" id="UserName" name="UserName">${sessionScope.LOGIN_INFO.userName}</a>
+			<a href="">ランキング</a> <a href="${pageContext.request.contextPath}/MyPageServlet" id="UserName" name="UserName">${sessionScope.LOGIN_INFO.userName}</a>
 			<a href="${pageContext.request.contextPath}/LogoutServlet"
 				id="Logout" name="Logout">ログアウト</a>
 		</nav>
