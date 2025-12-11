@@ -29,6 +29,10 @@ public class ShopDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+<<<<<<< HEAD
+		//String forwardPath = "shopdetail.jsp";
+=======
+>>>>>>> 76922496d7acb3d958a4f43b86c4cda4b902a76d
 		String forwardPath = "shopdetail.jsp";
 
 		// Shop_IDの取得

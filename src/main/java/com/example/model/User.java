@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -10,7 +11,7 @@ public class User {
 	private Long userId;
     private String userName;
     private Integer gender;
-    private LocalDate birthday;
+    private Date birthday;
     private String mailAddress;
     private String UserPassword; // ハッシュ化されたパスワードを格納
     private String phoneNumber;
@@ -35,7 +36,7 @@ public class User {
         return gender;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
@@ -73,7 +74,7 @@ public class User {
         this.gender = gender;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
