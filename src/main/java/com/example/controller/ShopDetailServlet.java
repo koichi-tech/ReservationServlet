@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.example.dao.ShopDetailDao;
 import com.example.dto.ShopDetailDto;
+import com.example.dto.ShopDetailPageDto;
 import com.example.dto.ShopListDto;
+import com.example.service.ShopDetailService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -21,25 +23,31 @@ public class ShopDetailServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private ShopDetailService service;
+
+	@Override
+	public void init() {
+		service = new ShopDetailService();
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
 		String forwardPath = "shopdetail.jsp";
 
 		// Shop_IDの取得
 		String shopId = request.getParameter("shopId");
 
-		// DAOを呼び出し、データ取得
-		ShopDetailDao dao = new ShopDetailDao();
-		ShopDetailDto shopDetailDto = dao.selectShopDetail(shopId);
+		// Serviceを呼び出し、データ取得
+		ShopDetailPageDto pageDto = service.getShopDetailPage(shopId);
 
 		// 取得結果をリクエストに格納
-		request.setAttribute("shopDetail", shopDetailDto);
+		request.setAttribute("pageDto", pageDto);
 
 		// shopdetail.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
