@@ -5,13 +5,13 @@ public class ShopDetailDto {
 	private String shopId;
 	private String shopName;
 	private String phoneNumber;
+	private int prefId;
+	private String prefName;
 	private String city;
 	private String address;
 	private String genreName;
 	private double avgRating;
 
-	private String fullAddress;
-	
 	// ----------------------------------------------------------------
 	// getter/setter
 	// ----------------------------------------------------------------
@@ -26,6 +26,10 @@ public class ShopDetailDto {
 
 	public String getPhoneNumber() {
 		return phoneNumber;
+	}
+
+	public String getPrefName() {
+		return prefName;
 	}
 
 	public String getCity() {
@@ -43,9 +47,14 @@ public class ShopDetailDto {
 	public double getAvgRating() {
 		return avgRating;
 	}
-	
+
+	// prefName、city、addressを結合して住所を取得
 	public String getFullAddress() {
-		return fullAddress;
+		StringBuilder fullAddress = new StringBuilder();
+		fullAddress.append(prefName);
+		fullAddress.append(city);
+		fullAddress.append(address);
+		return fullAddress.toString();
 	}
 
 	// --- セッター (Setter: フィールドに値を設定) ----------------------------
@@ -59,6 +68,10 @@ public class ShopDetailDto {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public void setPrefName(String prefName) {
+		this.prefName = prefName;
 	}
 
 	public void setCity(String city) {
@@ -77,8 +90,4 @@ public class ShopDetailDto {
 		this.avgRating = avgRating;
 	}
 
-	public void setFullAddress(String city, String address) {
-	    this.fullAddress = city + address;
-	}
-	
 }

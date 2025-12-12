@@ -72,7 +72,7 @@
 
 		<div class="shop-header">
 			<h2>${shopDetail.shopName}</h2>
-			<div class="rating-display">⭐⭐⭐⭐⭐ ${shopDetail.avgRating}</div>
+			<div class="rating-display">⭐ ${shopDetail.avgRating}</div>
 			<button class="reserve-btn"
 				onclick="location.href='reservation.html'">この店を予約する</button>
 		</div>
@@ -90,9 +90,9 @@
 					<p>
 						<strong>ジャンル:</strong> ${shopDetail.genreName}
 					</p>
-					<p>
-						<strong>紹介:</strong> 地元野菜を使った美味しい定食が人気です！
-					</p>
+					<!-- <p>
+						<strong>紹介:</strong> 現在調整中
+					</p> -->
 				</section>
 
 				<hr>
