@@ -63,16 +63,18 @@
 	<header class="pop-header">
 		<h1>🍣 日野ナビ</h1>
 		<nav class="nav-bar">
-			<a href="index.jsp">ホーム</a> <a href="#">ランキング</a> <a
-				href="mypage.jsp">マイページ</a>
+			<a href="${pageContext.request.contextPath}/ReservationPlatForm">ホーム</a>
+			<a href="#">ランキング</a> <a href="/mypage" id="UserName" name="UserName">${sessionScope.LOGIN_INFO.userName}</a>
+			<a href="${pageContext.request.contextPath}/LogoutServlet"
+				id="Logout" name="Logout">ログアウト</a>
 		</nav>
 	</header>
 
 	<main class="container">
 
 		<div class="shop-header">
-			<h2>${shopDetail.shopName}</h2>
-			<div class="rating-display">⭐ ${shopDetail.avgRating}</div>
+			<h2>${pageDto.shopDetail.shopName}</h2>
+			<div class="rating-display">⭐ ${pageDto.shopDetail.avgRating}</div>
 			<button class="reserve-btn"
 				onclick="location.href='reservation.html'">この店を予約する</button>
 		</div>
@@ -82,13 +84,13 @@
 				<section class="shop-info-box">
 					<h3>店舗情報</h3>
 					<p>
-						<strong>住所:</strong> ${shopDetail.fullAddress}
+						<strong>住所:</strong> ${pageDto.shopDetail.fullAddress}
 					</p>
 					<p>
-						<strong>電話番号:</strong> ${shopDetail.phoneNumber}
+						<strong>電話番号:</strong> ${pageDto.shopDetail.phoneNumber}
 					</p>
 					<p>
-						<strong>ジャンル:</strong> ${shopDetail.genreName}
+						<strong>ジャンル:</strong> ${pageDto.shopDetail.genreName}
 					</p>
 					<!-- <p>
 						<strong>紹介:</strong> 現在調整中
@@ -98,23 +100,18 @@
 				<hr>
 
 				<section>
-					<h3>✨ みんなのレビュー (35件)</h3>
-					<div class="review-card">
-						<h4>
-							山田 太郎 さん <span style="float: right; color: #ffc107;">⭐⭐⭐⭐⭐</span>
-						</h4>
-						<p>料理が美味しく、接客も丁寧でした！また利用させていただきます。</p>
-						<span style="font-size: 0.8em; color: #aaa;">投稿日:
-							2025/11/25</span>
-					</div>
-					<div class="review-card">
-						<h4>
-							佐藤 花子 さん <span style="float: right; color: #ffc107;">⭐⭐⭐⭐</span>
-						</h4>
-						<p>雰囲気が良かったです。週末は少し混みますね。</p>
-						<span style="font-size: 0.8em; color: #aaa;">投稿日:
-							2025/11/18</span>
-					</div>
+					<h3>✨ みんなのレビュー (${pageDto.reviewListCount}件)</h3>
+					<c:forEach var="displayReviewList"
+						items="${pageDto.displayReviewList}">
+						<div class="review-card">
+							<h4>${displayReviewList.userName}
+								さん <span style="float: right; color: #ffc107;">⭐${displayReviewList.rating}</span>
+							</h4>
+							${displayReviewList.comment}<br> <span
+								style="font-size: 0.8em; color: #aaa;">投稿日:
+								${displayReviewList.createdAt}</span>
+						</div>
+					</c:forEach>
 					<button class="search-btn">全てのレビューを見る</button>
 				</section>
 			</div>

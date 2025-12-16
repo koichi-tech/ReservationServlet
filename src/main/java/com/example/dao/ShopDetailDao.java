@@ -34,7 +34,6 @@ public class ShopDetailDao extends BaseDao {
 		sql.append("LEFT JOIN T_SHOP_GENRE AS B ON MP.GENRE_ID = B.GENRE_ID \n");
 		sql.append("LEFT JOIN t_review AS C ON A.SHOP_ID = C.SHOP_ID \n");
 		sql.append("LEFT JOIN T_PREFECTURE AS D ON A.PREF_ID = D.PREF_ID \n");
-		// sql.append("LEFT JOIN T_TIME_SLOTS AS D ON A.SHOP_ID = D.SHOP_ID \n");
 		sql.append("WHERE A.SHOP_ID = ? \n");
 		sql.append("GROUP BY A.SHOP_ID, A.SHOP_NAME, A.PHONE_NUMBER, A.PREF_ID, D.PREF_NAME, A.CITY, A.ADDRESS, B.GENRE_NAME");
 		String sqlStr = sql.toString();
