@@ -2,6 +2,7 @@ package com.example.dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class UserDto {
 	
@@ -9,7 +10,7 @@ public class UserDto {
 	private Long userId;
     private String userName;
     private Integer gender;
-    private LocalDate birthday;
+    private Date birthday;
     private String mailAddress;
     private String userPassword;
     private String phoneNumber;
@@ -34,7 +35,7 @@ public class UserDto {
         return gender;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
@@ -72,7 +73,7 @@ public class UserDto {
         this.gender = gender;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
