@@ -23,6 +23,8 @@ public class ShopDetailDao extends BaseDao {
 		sql.append("A.SHOP_ID AS SHOP_ID, \n");
 		sql.append("A.SHOP_NAME AS SHOP_NAME, \n");
 		sql.append("A.PHONE_NUMBER AS PHONE_NUMBER, \n");
+		sql.append("A.PREF_ID AS PREF_ID, \n");
+		sql.append("D.PREF_NAME AS PREF_NAME, \n");
 		sql.append("A.CITY AS CITY, \n");
 		sql.append("A.ADDRESS AS ADDRESS, \n");
 		sql.append("B.GENRE_NAME AS GENRE_NAME, \n");
@@ -31,9 +33,10 @@ public class ShopDetailDao extends BaseDao {
 		sql.append("LEFT JOIN T_SHOP_GENRE_MAP AS MP ON A.SHOP_ID = MP.SHOP_ID \n");
 		sql.append("LEFT JOIN T_SHOP_GENRE AS B ON MP.GENRE_ID = B.GENRE_ID \n");
 		sql.append("LEFT JOIN t_review AS C ON A.SHOP_ID = C.SHOP_ID \n");
+		sql.append("LEFT JOIN T_PREFECTURE AS D ON A.PREF_ID = D.PREF_ID \n");
 		// sql.append("LEFT JOIN T_TIME_SLOTS AS D ON A.SHOP_ID = D.SHOP_ID \n");
 		sql.append("WHERE A.SHOP_ID = ? \n");
-		sql.append("GROUP BY A.SHOP_ID, A.SHOP_NAME, A.PHONE_NUMBER, A.CITY, A.ADDRESS, B.GENRE_NAME");
+		sql.append("GROUP BY A.SHOP_ID, A.SHOP_NAME, A.PHONE_NUMBER, A.PREF_ID, D.PREF_NAME, A.CITY, A.ADDRESS, B.GENRE_NAME");
 		String sqlStr = sql.toString();
 
 		try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sqlStr);) {
@@ -45,7 +48,9 @@ public class ShopDetailDao extends BaseDao {
 					dto.setShopId(rs.getString("SHOP_ID"));
 					dto.setShopName(rs.getString("SHOP_NAME"));
 					dto.setPhoneNumber(rs.getString("PHONE_NUMBER"));
-					dto.setFullAddress(rs.getString("CITY"), rs.getString("ADDRESS"));
+					dto.setPrefName(rs.getString("PREF_NAME"));
+					dto.setCity(rs.getString("CITY"));
+					dto.setAddress(rs.getString("ADDRESS"));
 					dto.setGenreName(rs.getString("GENRE_NAME"));
 					dto.setAvgRating(rs.getDouble("AVG_RATING"));
 				}
