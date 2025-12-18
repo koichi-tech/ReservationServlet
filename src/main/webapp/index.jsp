@@ -74,7 +74,7 @@
 						<div>${shop.genreName}</div>
 						<div>⭐${shop.avgRating}</div>
 						<form action="ReservationServlet" method="POST">
-							<button type="submit" class="reserve-btn">予約する</button>
+							<button type="submit" class="reserve-btn" name="shopName" value="${shop.shopId}">予約する</button>
 						</form>
 					</div>
 				</c:forEach>

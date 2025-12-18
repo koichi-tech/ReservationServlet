@@ -33,9 +33,11 @@ public class ReservationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String forwardPath = "reservation.jsp";
+
+		// Shop_IDの取得
+		String shopId = request.getParameter("shopId");
 
 		// reservation.jspにフォワード（結果を渡しながら遷移）
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
